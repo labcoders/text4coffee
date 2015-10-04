@@ -7,7 +7,7 @@ SMS Command Summary
 ===================
 
 There are three permissions available in text4coffee: `admin` (A), `control`
-(C), and query `Q`. Each command requires zero or more permissions on your
+(C), and `query` (Q). Each command requires zero or more permissions on your
 account in order to run.
 
 Basic commands
@@ -38,7 +38,7 @@ Management commands
 General commands
 ----------------
 
-* `doc`: display a summary of commands
+* `doc` (no permissions required): display a summary of commands
 
 Setup
 =====
