@@ -1,9 +1,13 @@
 import json
 from flask import request
-from . import app, toggle, util, acl
+from . import app, toggle, util, acl, redis
+from time import sleep
+from time import time
+import cv2
 
 @app.route("/sms", methods=["POST"])
 def twizzle():
+    redis.set(app.config['LAST_BREW_TIME'], time())
     msg = request.form['Body']
     number = request.form['From']
 

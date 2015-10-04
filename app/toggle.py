@@ -1,7 +1,7 @@
 #!/bin/python
 import RPi.GPIO as gp
 
-from app import redis
+from app import redis, app
 
 PIN = 16
 
@@ -12,17 +12,17 @@ def set_state(state):
 
     gp.output(PIN, state)
     print "setting to state:", state
-    redis.set('pinstate', state)
+    redis.set(app.config.get('PIN_STATE'), state)
 
 def get_state():
     gp.setwarnings(False)
     gp.setmode(gp.BOARD)
     gp.setup(PIN, gp.OUT)
 
-    if redis.get('pinstate') is None:
+    if redis.get(app.config.get('PIN_STATE')) is None:
         set_state(False)
 
-    v = redis.get('pinstate')
+    v = redis.get(app.config.get('PIN_STATE'))
 
     if v is None:
         raise RuntimeError('pinstate failed to set')
