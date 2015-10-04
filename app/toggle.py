@@ -27,7 +27,7 @@ def get_state():
     if v is None:
         raise RuntimeError('pinstate failed to set')
 
-    return v
+    return v != "False"
 
 def toggle(state=None):
     gp.setwarnings(False)
